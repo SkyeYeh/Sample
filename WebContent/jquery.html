@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery - jquery.jsp</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- Google jQuery library 
+<script type="text/javascript" 
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+</script> -->
+<!-- Microsoft jQuery library
+<script type="text/javascript" 
+    src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js">
+</script> -->
+<script type="text/javascript">
+/*
+ * 以jq取代$
+ * var jq=jQuery.noConflict();
+ */
+/* 
+ * jQuery 事件： 
+ * $(document).ready(function)	將函數綁定到文檔的就緒事件（當文檔完成加載時）。
+ * $(selector).click(function)	觸發或將函數綁定到被選元素的點擊事件。
+ * $(selector).dblclick(function)	觸發或將函數綁定到被選元素的雙擊事件。
+ * $(selector).focus(function)	觸發或將函數綁定到被選元素的獲得焦點事件。
+ * $(selector).mouseover(function)	觸發或將函數綁定到被選元素的鼠標懸停事件 。
+ */
+ 
+/* 
+ * jQuery 效果： 
+ * $(selector).hide()			隱藏被選元素。
+ * $(selector).show()			顯示被選元素。
+ * $(selector).toggle()			切換（在隱藏與顯示之間）被選元素。
+ * $(selector).slideDown()		向下滑動（顯示）被選元素。
+ * $(selector).slideUp()		向上滑動（隱藏）被選元素。
+ * $(selector).slideToggle()	對被選元素切換向上滑動和向下滑動。
+ * $(selector).fadeIn()			淡入被選元素。
+ * $(selector).fadeOut()		淡出被選元素。
+ * $(selector).fadeTo()			把被選元素淡出為給定的不透明度。
+ * $(selector).animate()		對被選元素執行自定義動畫。
+ */
+  
+/* 
+ * jQuery HTML 操作： 
+ * $(selector).html(content)	改變被選元素的（內部）HTML。
+ * $(selector).append(content)	向被選元素的（內部）HTML 追加內容。
+ * $(selector).prepend(content)	向被選元素的（內部）HTML “預置”（Prepend）內容。
+ * $(selector).after(content)	在被選元素之後添加HTML。
+ * $(selector).before(content)	在被選元素之前添加HTML。
+ */
+
+/*
+ * jQuery CSS 函數： 
+ * $(selector).css(name,value)		匹配元素設定樣式屬性的值。
+ * $(selector).css({properties})	為匹配元素設定多個樣式屬性。
+ * $(selector).css(name)			獲得第一個匹配元素的樣式屬性值。
+ * $(selector).height(value)		設置匹配元素的高度。
+ * $(selector).width(value)			設置匹配元素的寬度。
+ * $(selector).toggleClass(class)	切換樣式。
+ */
+
+/*
+ * jQuery Ajax 請求： 
+ * $(selector).load(url,data,callback)	把遠程數據加載到被選的元素中。
+ * $.ajax(options)						把遠程數據加載到 XMLHttpRequest 對像中。
+ * $.get(url,data,callback,type)		使用 HTTP GET 來加載遠程數據。
+ * $.post(url,data,callback,type)		使用 HTTP POST 來加載遠程數據。
+ * $.getJSON(url,data,callback)			使用 HTTP GET 來加載遠程 JSON 數據。
+ * $.getScript(url,callback)			加載並執行遠程的 JavaScript 文件。
+ */
+$(document).ready(function(){
+	$('#hide').click(hide);
+	$('#show').click(show);
+	$('#addhtml').click(addHTML);
+	$('#docss').click(doCss);
+	$('#doajax').click(doAjax);
+});
+
+function hide() {
+	$('#a').hide('slow', function(){
+		$('#b').hide('normal', function(){
+			$('#c').hide('fast');
+		});
+	});
+}
+
+function show() {
+	$('#a').show();
+	$('#b').show();
+	$('#c').show();
+}
+
+function addHTML() {
+	$('#d').html(' jQuery ');
+	$('#e').append(' jQuery ');
+	$('#f').after(' jQuery ');
+}
+
+function doCss() {
+	$('#d').css('background-color', 'red');
+	$('#d').height(40);
+	$('#d').width(60);
+}
+
+function doAjax() {
+	$('#showAjax').load('ajax.view', 'temp=Hello Ajax!', doCss);
+}
+</script>
+</head>
+<body>
+<p id="a">a</p>
+<p id="b">b</p>
+<p id="c">c</p>
+<p id="d">d</p>
+<p id="e">e</p>
+<p id="f">f</p>
+<button id="hide">Hidden</button>
+<button id="show">Show</button>
+<button id="addhtml">Add HTML</button>
+<button id="docss">CSS</button>
+<button id="doajax">Ajax</button>
+<div id="showAjax"></div>
+</body>
+</html>

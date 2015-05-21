@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//LOGGER" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+  
+  <!-- appender設定 -->
+  <appender name="CA" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" 
+        value="%-4r [%t] %-5p %c %x - %m%n" />
+    </layout>
+  </appender>
+  
+  <appender name="FA" class="org.apache.log4j.FileAppender">
+    <param name="File" value="D:/workspace/Sample/log/sample.log" />
+    <param name="Threshold" value="ERROR" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" 
+        value="%-4r [%t] %-5p %c %x - %m%n" />
+    </layout>
+  </appender>
+  
+  <appender name="ServletFileAppender" class="org.apache.log4j.FileAppender">
+    <param name="File" value="D:/workspace/Sample/log/servlet.log" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" 
+        value="%-4r [%t] %-5p %c %x - %m%n" />
+    </layout>
+  </appender>
+  
+  <appender name="ActionFileAppender" class="org.apache.log4j.FileAppender">
+    <param name="File" value="D:/workspace/Sample/log/action.log" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" 
+        value="%-4r [%t] %-5p %c %x - %m%n" />
+    </layout>
+  </appender>
+  
+  <!-- logger設定 -->
+  <logger name="com.sample.servlet">
+    <level value="DEBUG" />
+    <appender-ref ref="ServletFileAppender" />
+  </logger>
+  
+  <logger name="com.sample.action">
+    <level value="INFO" />
+    <appender-ref ref="ActionFileAppender" />
+  </logger>
+  
+  <!-- rootLogger設定 -->
+  <root>
+    <level value="WARN" />
+    <appender-ref ref="CA" />
+    <appender-ref ref="FA" />
+  </root>
+
+</log4j:configuration>
+
+<!--
+%c 輸出日誌訊息所屬的類別的全名
+%d 輸出日誌時間點的日期或時間，指定格式的方式：%d{yyy-MM-dd HH:mm:ss }。
+%l 輸出日誌事件的發生位置，即輸出日誌訊息的語句處於它所在的類別的第幾行。
+%m 輸出訊息，如log(message)中的message。
+%n 輸出一個列尾符號。
+%p 輸出優先階層，即DEBUG，INFO，WARN，ERROR，FATAL。
+    如果是調用debug()輸出的，則為DEBUG，依此類推。
+%r 輸出自應用啟動到輸出該日誌訊息所耗費的毫秒數。
+%t 輸出產生該日誌事件的線程名。
+%r 輸出自應用啟動到輸出該日誌訊息所耗費的毫秒數。
+%f 輸出日誌訊息所屬的類別的類別名。
+appender被設為org.apache.log4j.DailyRollingFileAppender表示Log4j
+    會將日誌檔依日期分開。
+-->

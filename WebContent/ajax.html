@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Ajax - ajax.html</title>
+<script type="text/javascript">
+
+var xmlhttp;
+
+function doAjax(url) {
+	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp = new XMLHttpRequest();
+	} else {// code for IE6, IE5
+		xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+	}
+	
+	xmlhttp.onreadystatechange = myFunction;
+	
+	sendGetRequest(url);
+	//sendPostRequest(url);
+}
+
+function myFunction() {
+	/* 
+	 * 請求狀態：
+	 * 0：請求未初始化，1：伺服器連接已建立，2：請求已接收，3：請求處理中，
+	 * 4：請求已完成。
+	 * HTTP狀態：
+	 * 200 ：請求成功 ，202： 請求被接受但未處理完成 ，400： 請求錯誤 ，
+	 * 404 ：找不到頁面 ，500 ：內部伺服器錯誤。 
+	 */
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		document.getElementById('ajax').innerHTML = 
+		xmlhttp.responseText;
+	}
+}
+
+function sendGetRequest(url) {
+	xmlhttp.open('GET', url, true);
+	xmlhttp.send();
+}
+
+function sendPostRequest(url) {
+	xmlhttp.open('POST', url, true);
+	xmlhttp.setRequestHeader('Content-type', 
+							 'application/x-www-form-urlencoded');
+	xmlhttp.send('temp=1');
+}
+
+</script>
+</head>
+<body>
+<div id="ajax">
+Ajax sample.
+</div>
+<input type="button" value="doAjax" 
+    onclick="doAjax('/Sample/ajax.view?temp=1')" />
+</body>
+</html>

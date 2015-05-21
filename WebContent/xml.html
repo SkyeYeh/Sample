@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>XML - xml.html</title>
+<script type="text/javascript">
+var xmlhttp;
+if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+	xmlhttp = new XMLHttpRequest();
+} else {// code for IE6, IE5
+	xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+}
+xmlhttp.open('GET', 'xml/xml.xml', false);
+xmlhttp.send();
+var xmlDoc = xmlhttp.responseXML;
+var cd = xmlDoc.getElementsByTagName('CD');
+var i = 0;
+
+function show() {
+	var title = cd[i].getElementsByTagName('TITLE')[0].childNodes[0].nodeValue;
+	var price = cd[i].getElementsByTagName('PRICE')[0] != null?
+			cd[i].getElementsByTagName('PRICE')[0].childNodes[0].nodeValue: 
+			'無';
+	var year = cd[i].getElementsByTagName('YEAR')[0] != null? 
+			cd[i].getElementsByTagName('YEAR')[0].childNodes[0].nodeValue: '無';
+	document.getElementById('result').innerHTML = 'title=' + title 
+			+ '</br>price=' + price + '</br>year=' + year;
+}
+
+function next() {
+	if (i == (cd.length - 1)) {
+		alert('最後一項');
+	} else {
+		i++;
+		show();
+	}
+}
+
+function previous() {
+	if (i == 0) {
+		alert('無上一項');
+	} else {
+		i--;
+		show();
+	}
+}
+</script>
+</head>
+<body onload="show();">
+<input type="button" value="下一項" onclick="next();" />
+<input type="button" value="上一項" onclick="previous();" />
+<div id='result'></div>
+</body>
+</html>

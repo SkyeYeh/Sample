@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JavaScript - javascript.html</title>
+<script type="text/javascript" src="js/javascript.js"></script>
+<script type="text/javascript">
+function doAlert() {
+	alert('警告視窗。');
+}
+
+function doConfirm() {
+	confirm('確認視窗。');
+}
+
+function doPrompt() {
+	prompt('提示視窗。','提示視窗預設文字。');
+}
+</script>
+</head>
+<body>
+<script type="text/javascript">
+	document.writeln('navigator.appName = ' + navigator.appName + '<br />');
+	document.writeln('navigator.appVersion = ' + navigator.appVersion + '<br />');
+	document.writeln('navigator.appCodeName = ' + navigator.appCodeName 
+			+ '<br />');
+</script>
+<form action="javascript.html">
+
+  <!-- 時鐘 -->
+  <p>時鐘</p>
+  <input type="button" value="時鐘" onclick="getTime();" />
+  <input type="button" value="取消時鐘" onclick="clearTime();" /><br />
+  <div id="clock"></div><br />
+  
+  <!-- 排序 -->
+  <p>排序</p>
+  <input type="button" value="排序" onclick="doSort();" />
+  <input type="submit" value="送交" /><br />
+  
+  <!-- JSON -->
+  <p>JSON</p>
+  <input type="button" value="JSON" onclick="doJson();" /><br />
+  <div id="json"></div><br />
+  <div id="jsonArray"></div><br />
+  <div id="jsonEval"></div><br />
+  
+  <!-- Test -->
+  <input type="button" value="test" onclick="test();" /><br />
+</form>
+</body>
+</html>

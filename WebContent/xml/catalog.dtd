@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 帶有子元素之元素，至少出現一次+，出現零或多次*，出現零或一次? -->
+<!ELEMENT CD (TITLE,ARTIST,(COUNTRY1|COUNTRY2),COMPANY+,PRICE*,YEAR?)>
+<!-- 只有PCDATA之元素 -->
+<!ELEMENT TITLE (#PCDATA)>
+<!-- 空元素 -->
+<!ELEMENT ARTIST EMPTY>
+<!-- 帶有任何內容之元素 -->
+<!ELEMENT COUNTRY1 ANY>
+<!ELEMENT COUNTRY2 ANY>
+<!ELEMENT COMPANY (#PCDATA)>
+<!ELEMENT PRICE (#PCDATA)>
+<!ELEMENT YEAR (#PCDATA)>
+
+<!-- ATTLIST 元素名称 属性名称 属性类型 默认值 -->
+<!ATTLIST TITLE no CDATA "1">
+<!ATTLIST ARTIST gender (man|woman) #IMPLIED>
+<!--
+屬性類型：
+CDATA			值為字符數據(character data)
+(en1|en2|..)	此值是枚舉列表中的一個值
+ID				值為唯一的id
+IDREF			值為另外一個元素的id
+IDREFS			值為其他id 的列表
+NMTOKEN			值為合法的XML 名稱
+NMTOKENS		值為合法的XML 名稱的列表
+ENTITY			值是一個實體
+ENTITIES		值是一個實體列表
+NOTATION		此值是符號的名稱
+xml:			值是一個預定義的XML 值
+-->
+<!--
+默認值參數：
+值				屬性的默認值
+#REQUIRED		屬性值是必需的
+#IMPLIED		屬性不是必需的
+#FIXED value	屬性值是固定的
+-->

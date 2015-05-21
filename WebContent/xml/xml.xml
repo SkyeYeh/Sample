@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+實體中引用符號：
+&lt;	<	小於
+&gt;	>	大於
+&amp;	&	和號
+&apos;	'	省略號
+&quot;	"	引號
+-->
+<!-- DOCTYPE 根元素 [元素聲明] -->
+<!-- 
+<!DOCTYPE CATALOG [
+	<!ELEMENT CD (TITLE,ARTIST,COUNTRY,COMPANY,PRICE,YEAR)>
+	<!ELEMENT TITLE (#PCDATA)>
+	<!ELEMENT ARTIST (#PCDATA)>
+	<!ELEMENT COUNTRY (#PCDATA)>
+	<!ELEMENT COMPANY (#PCDATA)>
+	<!ELEMENT PRICE (#PCDATA)>
+	<!ELEMENT YEAR (#PCDATA)>
+]> 
+-->
+<!-- DOCTYPE 根元素 SYSTEM "文件名" -->
+<!DOCTYPE CATALOG SYSTEM "catalog.dtd">
+<CATALOG>
+	<CD>
+		<!-- CDATA為不會被解析之本文 -->
+		<TITLE no="1"><![CDATA[Empire Burlesque]]></TITLE>
+		<ARTIST gender="man" />
+		<COUNTRY1><![CDATA[USA]]></COUNTRY1>
+		<COMPANY><![CDATA[Columbia]]></COMPANY>
+		<PRICE><![CDATA[100]]></PRICE>
+		<YEAR><![CDATA[1985]]></YEAR>
+	</CD>
+	<CD>
+		<TITLE no="2">Greatest Hits</TITLE>
+		<ARTIST gender="woman" />
+		<COUNTRY2>USA</COUNTRY2>
+		<COMPANY>RCA1</COMPANY>
+		<COMPANY>RCA2</COMPANY>
+		<PRICE>200</PRICE>
+		<YEAR>1982</YEAR>
+	</CD>
+	<CD>
+		<TITLE>Hide your heart</TITLE>
+		<ARTIST />
+		<COUNTRY1>UK</COUNTRY1>
+		<COMPANY>CBS Records1</COMPANY>
+		<PRICE>300</PRICE>
+		<YEAR>1982</YEAR>
+	</CD>
+	<CD>
+		<TITLE>Heart</TITLE>
+		<ARTIST />
+		<COUNTRY1>UK</COUNTRY1>
+		<COMPANY>CBS Records1</COMPANY>
+	</CD>
+</CATALOG>
