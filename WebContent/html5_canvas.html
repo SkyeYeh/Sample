@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML5 Canvas</title>
+    <script>
+    /**
+     * 繪圖。
+     */
+    function drawing() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = "#FF0000";
+        ctx.fillRect(0, 0, 150, 75);
+    }
+
+    /**
+     * 畫線。
+     */
+    function line() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.moveTo(0, 0);
+        ctx.lineTo(200, 100);
+        ctx.stroke();
+    }
+
+    /**
+     * 畫圓。
+     */
+    function circle() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+    }
+
+    /**
+     * 寫字。
+     */
+    function text() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello World", 10, 50);
+    }
+
+    /**
+     * 畫線型漸層。
+     */
+    function lineGradient() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // Create gradient
+        var grd = ctx.createLinearGradient(0, 0, 200, 0);
+        grd.addColorStop(0, "red");
+        grd.addColorStop(1, "white");
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(10, 10, 150, 80);
+    }
+
+    /**
+     * 畫圓形漸層。
+     */
+    function circularGradient() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // Create gradient
+        var grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+        grd.addColorStop(0, "red");
+        grd.addColorStop(1, "white");
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(10, 10, 150, 80);
+    }
+
+    /**
+     * 繪圖。
+     */
+    function image() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("scream");
+        ctx.drawImage(img, 10, 10);
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="200" height="150" style="border:1px solid #000000;">
+    </canvas>
+    <br />
+    <input type="button" onclick="drawing()" value="繪圖">
+    <input type="button" onclick="line()" value="畫線">
+    <input type="button" onclick="circle()" value="畫圓">
+    <input type="button" onclick="text()" value="寫字">
+    <input type="button" onclick="lineGradient()" value="畫線型漸層">
+    <input type="button" onclick="circularGradient()" value="畫圓形漸層">
+    <input type="button" onclick="image()" value="繪圖">
+    <img id="scream" src="image/img_the_scream.png" alt="The Scream" width="128" height="128" style="display: none;">
+</body>
+
+</html>
