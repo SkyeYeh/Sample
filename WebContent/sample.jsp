@@ -123,7 +123,7 @@
       ID = 1:home.jsp, 2:sample.jsp, 3:result.jsp<br />
       ID:<input type="text" name="id" value="" /><br />
       NAME:<input type="text" name="name" value="" /><br />
-      USER.ID:<input type="text" name=user.id value="" /><br />
+      USER.ID:<input type="text" name="user.id" value="" /><br />
       USER.NAME:<input type="text" name="user.name" value="" /><br />
       <input name="submit" type="submit" value="提交" />
     </form>
